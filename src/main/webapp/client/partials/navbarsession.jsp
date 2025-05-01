@@ -41,6 +41,7 @@
             </div>
             <a href="${pageContext.request.contextPath}/profile" class="flex items-center px-4 py-2 hover:bg-gray-50"><i class="fas fa-user mr-2 text-gray-500"></i>Profile</a>
             <a href="${pageContext.request.contextPath}/bookings" class="flex items-center px-4 py-2 hover:bg-gray-50"><i class="fas fa-ticket-alt mr-2 text-gray-500"></i>My Bookings</a>
+            <a href="${pageContext.request.contextPath}/settings" class="flex items-center px-4 py-2 hover:bg-gray-50"><i class="fas fa-cog mr-2 text-gray-500"></i>Settings</a>
             <div class="border-t">
               <a href="${pageContext.request.contextPath}/logout"
                  class="flex items-center px-4 py-2 text-red-600 hover:bg-red-50"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a>

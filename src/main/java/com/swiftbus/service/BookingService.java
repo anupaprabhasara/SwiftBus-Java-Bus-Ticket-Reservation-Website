@@ -25,6 +25,42 @@ public class BookingService {
         }
         return false;
     }
+    
+    // In BookingService.java
+    public List<Booking> getBookingsByUserId(int userId) {
+        List<Booking> bookings = new ArrayList<>();
+        String query = "SELECT * FROM bookings_view WHERE user_id = ? ORDER BY booking_time DESC";
+
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(query)) {
+
+            stmt.setInt(1, userId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Booking booking = new Booking();
+                booking.setBookingId(rs.getInt("booking_id"));
+                booking.setUserName(rs.getString("user_name"));
+                booking.setUserEmail(rs.getString("user_email"));
+                booking.setBusNumber(rs.getString("bus_number"));
+                booking.setStartLocation(rs.getString("start_location"));
+                booking.setEndLocation(rs.getString("end_location"));
+                booking.setTicketPrice(rs.getDouble("ticket_price"));
+                booking.setTravelDate(rs.getDate("travel_date").toString());
+                booking.setStartTime(rs.getString("start_time"));
+                booking.setArrivalTime(rs.getString("arrival_time"));
+                booking.setNumberOfSeats(rs.getInt("number_of_seats"));
+                booking.setBookingTime(rs.getString("booking_time"));
+                booking.setStatus(rs.getString("status"));
+                bookings.add(booking);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return bookings;
+    }
 
     // Get All Bookings (from view)
     public List<Booking> getAllBookings() {
