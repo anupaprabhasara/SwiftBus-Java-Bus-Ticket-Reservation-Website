@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SwiftBus | Admin Login</title>
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/swiftbus/assets/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://ui-avatars.com/api/?name=Swift%20Bus&background=22c55e&color=fff&rounded=true" type="image/x-icon">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
