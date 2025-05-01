@@ -10,20 +10,38 @@ import java.util.List;
 public class UserService {
 
     // Create User
-    public boolean createUser(User user) {
-        String query = "INSERT INTO users (name, email, phone, password) VALUES (?, ?, ?, ?)";
-        try (Connection connection = DBConnection.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, user.getName());
-            stmt.setString(2, user.getEmail());
-            stmt.setString(3, user.getPhone());
-            stmt.setString(4, user.getPassword());
-            return stmt.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+	public boolean createUser(User user) {
+	    String query = "INSERT INTO users (name, email, password, phone) VALUES (?, ?, ?, ?)";
+	    try (Connection con = DBConnection.getConnection();
+	         PreparedStatement ps = con.prepareStatement(query)) {
+	        ps.setString(1, user.getName());
+	        ps.setString(2, user.getEmail());
+	        ps.setString(3, user.getPassword());
+	        ps.setString(4, user.getPhone());
+	        ps.executeUpdate();
+	        return true;
+	    } catch (SQLIntegrityConstraintViolationException e) {
+	        System.out.println("Email already exists: " + e.getMessage());
+	        return false; // only return false for duplicate email
+	    } catch (SQLException e) {
+	        e.printStackTrace(); // log other issues
+	        return false;
+	    }
+	}
+	
+	// Email Check
+	public boolean isEmailTaken(String email) {
+	    String query = "SELECT 1 FROM users WHERE email = ?";
+	    try (Connection con = DBConnection.getConnection();
+	         PreparedStatement ps = con.prepareStatement(query)) {
+	        ps.setString(1, email);
+	        ResultSet rs = ps.executeQuery();
+	        return rs.next(); // email found
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return true; // fail-safe: assume email is taken
+	    }
+	}
 
     // Get User by ID
     public User getUser(int id) {

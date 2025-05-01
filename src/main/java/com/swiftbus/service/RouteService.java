@@ -44,7 +44,33 @@ public class RouteService {
         }
         return null;
     }
+    
+    public List<Route> getTopRoutes(int limit) {
+        List<Route> routes = new ArrayList<>();
+        String query = "SELECT * FROM routes ORDER BY route_id LIMIT ?";
 
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(query)) {
+
+            stmt.setInt(1, limit);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Route route = new Route();
+                route.setRouteId(rs.getInt("route_id"));
+                route.setStartLocation(rs.getString("start_location"));
+                route.setEndLocation(rs.getString("end_location"));
+                route.setTicketPrice(rs.getDouble("ticket_price"));
+                routes.add(route);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return routes;
+    }
+    
     // Get All Routes
     public List<Route> getAllRoutes() {
         List<Route> routes = new ArrayList<>();
