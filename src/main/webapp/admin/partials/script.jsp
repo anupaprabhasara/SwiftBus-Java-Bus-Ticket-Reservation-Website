@@ -2,10 +2,6 @@
 	pageEncoding="UTF-8"%>
 
 <script>
-    function logout() {
-      window.location.href = "${pageContext.request.contextPath}/admin/logout";
-    }
-
     function confirmDelete(url) {
       if (confirm('Are you sure you want to delete this record?')) {
         window.location.href = url;

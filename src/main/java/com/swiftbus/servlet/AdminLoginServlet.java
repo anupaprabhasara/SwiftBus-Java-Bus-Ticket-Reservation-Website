@@ -25,7 +25,7 @@ public class AdminLoginServlet extends HttpServlet {
 
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("admin") != null) {
-            response.sendRedirect(request.getContextPath() + "/admin/admin");
+            response.sendRedirect(request.getContextPath() + "/admin/dashboard");
             return;
         }
 
@@ -40,7 +40,7 @@ public class AdminLoginServlet extends HttpServlet {
             session.setAttribute("email", admin.getEmail());
             session.setMaxInactiveInterval(30 * 60); // 30 minutes
 
-            response.sendRedirect(request.getContextPath() + "/admin/admin");
+            response.sendRedirect(request.getContextPath() + "/admin/dashboard");
         } else {
             request.setAttribute("error", "Incorrect username/email or password!");
             request.getRequestDispatcher("/admin/login.jsp").forward(request, response);
@@ -62,7 +62,7 @@ public class AdminLoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("admin") != null) {
-            response.sendRedirect(request.getContextPath() + "/admin/admin");
+            response.sendRedirect(request.getContextPath() + "/admin/dashboard");
         } else {
             request.getRequestDispatcher("/admin/login.jsp").forward(request, response);
         }

@@ -46,8 +46,8 @@
 
   <!-- Logout -->
   <div class="p-4 border-t border-gray-700">
-    <button onclick="logout()" class="w-full flex items-center justify-center text-red-400 hover:text-red-500 font-semibold transition">
+    <a href="${pageContext.request.contextPath}/admin/logout" class="w-full flex items-center justify-center text-red-400 hover:text-red-500 font-semibold transition">
       <i class="fas fa-sign-out-alt mr-2"></i> Logout
-    </button>
+    </a>
   </div>
 </aside>

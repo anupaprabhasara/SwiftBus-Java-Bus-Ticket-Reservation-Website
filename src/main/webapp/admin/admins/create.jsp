@@ -11,18 +11,17 @@
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body class="bg-gray-900 text-gray-100 min-h-screen flex">
 
-  <!-- Sidebar -->
+  <!-- Sidebar (fixed) -->
   <%@ include file="../partials/sidebar.jsp" %>
 
-  <!-- Main Content -->
-  <div class="flex-1 flex flex-col">
+  <!-- Main Content with Sidebar Margin -->
+  <div class="flex-1 flex flex-col md:ml-60">
 
     <!-- Topbar -->
     <%@ include file="../partials/header.jsp" %>
@@ -30,9 +29,8 @@
     <!-- Main Area -->
     <main class="flex-1 p-6 space-y-6">
 
-      <!-- Full Width Form -->
+      <!-- Admin Create Form -->
       <form action="${pageContext.request.contextPath}/admin/admin" method="POST" class="bg-gray-800 shadow-lg rounded-lg p-8 w-full">
-
         <input type="hidden" name="action" value="create">
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -78,11 +76,9 @@
             <i class="fas fa-save"></i> Save Admin
           </button>
         </div>
-
       </form>
 
     </main>
-
   </div>
 
   <!-- JavaScript -->
@@ -107,11 +103,7 @@
       number.className = isNumberValid ? "text-green-400" : "text-red-500";
       special.className = isSpecialValid ? "text-green-400" : "text-red-500";
 
-      if (isLengthValid && isUppercaseValid && isNumberValid && isSpecialValid) {
-        submitButton.disabled = false;
-      } else {
-        submitButton.disabled = true;
-      }
+      submitButton.disabled = !(isLengthValid && isUppercaseValid && isNumberValid && isSpecialValid);
     }
   </script>
 

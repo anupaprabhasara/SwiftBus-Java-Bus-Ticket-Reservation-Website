@@ -11,18 +11,17 @@
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body class="bg-gray-900 text-gray-100 min-h-screen flex">
 
-  <!-- Sidebar -->
+  <!-- Sidebar (fixed) -->
   <%@ include file="../partials/sidebar.jsp" %>
 
-  <!-- Main Content -->
-  <div class="flex-1 flex flex-col">
+  <!-- Main Content Area with Sidebar Margin -->
+  <div class="flex-1 flex flex-col md:ml-60">
 
     <!-- Topbar -->
     <%@ include file="../partials/header.jsp" %>
@@ -30,7 +29,7 @@
     <!-- Main Area -->
     <main class="flex-1 p-6 space-y-6">
 
-      <!-- Full Width Form -->
+      <!-- Edit Bus Form -->
       <form action="${pageContext.request.contextPath}/admin/bus" method="POST" class="bg-gray-800 shadow-lg rounded-lg p-8 w-full">
 
         <input type="hidden" name="action" value="update">
@@ -38,7 +37,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           
-          <!-- Left Side -->
+          <!-- Bus Number -->
           <div class="space-y-4">
             <div>
               <label class="block text-sm font-medium mb-1" for="bus_number">Bus Number</label>
@@ -48,7 +47,7 @@
             </div>
           </div>
 
-          <!-- Right Side -->
+          <!-- Total Seats -->
           <div class="space-y-4">
             <div>
               <label class="block text-sm font-medium mb-1" for="total_seats">Total Seats</label>
@@ -70,7 +69,6 @@
       </form>
 
     </main>
-
   </div>
 
   <!-- JavaScript -->

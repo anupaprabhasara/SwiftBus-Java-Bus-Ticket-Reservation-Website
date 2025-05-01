@@ -3,7 +3,7 @@
 	
 <%
     String uri = request.getRequestURI();
-    String pageTitle = "Dashboard";
+    String pageTitle = "Dashboard Overview";
 
     if (uri.contains("/admin/admin")) {
         pageTitle = "Admins Management";
