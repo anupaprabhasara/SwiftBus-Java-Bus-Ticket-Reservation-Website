@@ -11,18 +11,17 @@
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body class="bg-gray-900 text-gray-100 min-h-screen flex">
 
-  <!-- Sidebar -->
+  <!-- Sidebar (fixed) -->
   <%@ include file="../partials/sidebar.jsp" %>
 
   <!-- Main Content -->
-  <div class="flex-1 flex flex-col">
+  <div class="flex-1 flex flex-col md:ml-60">
 
     <!-- Topbar -->
     <%@ include file="../partials/header.jsp" %>

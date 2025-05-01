@@ -11,28 +11,26 @@
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body class="bg-gray-900 text-gray-100 min-h-screen flex">
 
-  <!-- Sidebar -->
+  <!-- Sidebar (fixed) -->
   <%@ include file="../partials/sidebar.jsp" %>
 
   <!-- Main Content -->
-  <div class="flex-1 flex flex-col">
-
+  <div class="flex-1 flex flex-col md:ml-60"> <!-- push right -->
+    
     <!-- Topbar -->
     <%@ include file="../partials/header.jsp" %>
 
     <!-- Main Area -->
     <main class="flex-1 p-6 space-y-6">
 
-      <!-- Actions: Create & Search -->
+      <!-- Actions -->
       <div class="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
-
         <a href="${pageContext.request.contextPath}/admin/admin?action=create"
           class="flex items-center gap-2 px-5 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition">
           <i class="fas fa-plus"></i> Create New Admin
@@ -43,10 +41,9 @@
             class="w-full pl-10 pr-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-green-500 focus:outline-none text-white">
           <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
         </div>
-
       </div>
 
-      <!-- Data Table -->
+      <!-- Table -->
       <div class="overflow-x-auto bg-gray-800 shadow-lg rounded-lg">
         <table class="w-full text-sm text-left">
           <thead class="text-xs uppercase bg-gray-700 text-gray-300">
@@ -80,9 +77,7 @@
               </c:when>
               <c:otherwise>
                 <tr>
-                  <td colspan="5" class="px-6 py-4 text-center text-gray-400">
-                    No admins found.
-                  </td>
+                  <td colspan="5" class="px-6 py-4 text-center text-gray-400">No admins found.</td>
                 </tr>
               </c:otherwise>
             </c:choose>
@@ -91,7 +86,6 @@
       </div>
 
     </main>
-
   </div>
 
   <!-- JavaScript -->
